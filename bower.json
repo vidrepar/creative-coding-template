@@ -1,0 +1,17 @@
+{
+  "name": "music-intro",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "vidrepar <vid.repar@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
