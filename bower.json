@@ -1,7 +1,7 @@
 {
-  "name": "music-intro",
+  "name": "app",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "index.html",
   "authors": [
     "vidrepar <vid.repar@gmail.com>"
   ],

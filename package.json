@@ -1,14 +1,21 @@
 {
-  "name": "music-intro",
-  "version": "1.0.0",
+  "name": "app",
+  "version": "0.0.1",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "index.html",
   "dependencies": {
     "gulp": "^3.9.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-serve": "^1.4.0"
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cheerio": "^0.6.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-dom-src": "^0.2.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-serve": "^1.4.0",
+    "gulp-uglify": "^1.5.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
