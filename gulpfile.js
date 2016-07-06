@@ -5,7 +5,7 @@ var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
 var cheerio     = require('gulp-cheerio');
 var htmlMin     = require('gulp-htmlmin');
-var cssmin      = require('gulp-cssmin');
+var cleanCSS      = require('gulp-clean-css');
 var autoprefixer= require('gulp-autoprefixer');
 
 gulp.task('serve', serve('./'));
@@ -14,7 +14,10 @@ gulp.task('css', function () {
 
     domSrc({ file:'index.html', selector:'link', attribute:'href' })
         .pipe(concat('app.full.min.css'))
-        .pipe(cssmin())
+        .pipe(cleanCSS({debug: true}, function(details) {
+            console.log(details.name + ': ' + details.stats.originalSize);
+            console.log(details.name + ': ' + details.stats.minifiedSize);
+        }))
         .pipe(gulp.dest('dist/'))
 
 });
@@ -40,7 +43,7 @@ gulp.task('html', function () {
             $('body').append('<script src="app.full.min.js"></script>');
 
         }))
-        .pipe(htmlMin({ collapseWhitespace:true }))
+        //.pipe(htmlMin({ collapseWhitespace:true }))
         .pipe(gulp.dest('dist/'));
 
 });
