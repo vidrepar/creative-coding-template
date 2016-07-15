@@ -5,8 +5,9 @@ var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
 var cheerio     = require('gulp-cheerio');
 var htmlMin     = require('gulp-htmlmin');
-var cleanCSS      = require('gulp-clean-css');
+var cleanCSS    = require('gulp-clean-css');
 var autoprefixer= require('gulp-autoprefixer');
+var jshint      = require('gulp-jshint');
 
 gulp.task('serve', serve('./'));
 
@@ -25,8 +26,10 @@ gulp.task('css', function () {
 gulp.task('js', function () {
 
     domSrc({ file:'index.html', selector:'script', attribute:'src' })
-        .pipe(concat('app.full.min.js'))
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
         .pipe(uglify())
+        .pipe(concat('app.full.min.js'))
         .pipe(gulp.dest('dist/'));
 
 });
