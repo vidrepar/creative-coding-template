@@ -8,8 +8,9 @@ var htmlMin     = require('gulp-htmlmin');
 var cleanCSS    = require('gulp-clean-css');
 var autoprefixer= require('gulp-autoprefixer');
 var jshint      = require('gulp-jshint');
+var browserSync = require('browser-sync').create();
 
-gulp.task('serve', serve('./'));
+gulp.task('serve', ['browser-sync']);
 
 gulp.task('css', function () {
 
@@ -46,9 +47,24 @@ gulp.task('html', function () {
             $('body').append('<script src="app.full.min.js"></script>');
 
         }))
-        //.pipe(htmlMin({ collapseWhitespace:true }))
+        .pipe(htmlMin({ collapseWhitespace:true }))
         .pipe(gulp.dest('dist/'));
 
+});
+
+gulp.task('browser-sync', function () {
+    var files = [
+        '*.html',
+        'css/**/*.css',
+        //'/imgs/**/*.png',
+        'js/**/*.js'
+    ];
+
+    browserSync.init(files, {
+        server: {
+            baseDir: './'
+        }
+    });
 });
 
 gulp.task('build', ['css', 'js', 'html']);
